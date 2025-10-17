@@ -1,276 +1,343 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valor que o João deve para o Bruno</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            background-image: url('img/barros.png');
-            background-repeat: repeat;
-            background-size: 120px 120px; 
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valor que o João deve para o Bruno</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      background-image: url('img/barros.png');
+      background-repeat: repeat;
+      background-size: 120px 120px;
+    }
 
-        h1 {
-            font-size: 2.5em;
-            color: #333;
-            margin-top: 40px;
-        }
+    h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin-top: 40px;
+    }
 
-        #contador-container {
-            display: inline-block;
-            padding: 30px;
-            border: 3px solid #333;
-            background-color: #fff;
-            border-radius: 15px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+    #contador-container {
+      display: inline-block;
+      padding: 30px;
+      border: 3px solid #333;
+      background-color: #fff;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 
-        #contador {
-            font-size: 2.5em;
-            color: #444;
-            margin: 20px 0;
-        }
+    #contador {
+      font-size: 2.5em;
+      color: #444;
+      margin: 20px 0;
+    }
 
-        #descricao {
-            font-size: 1em;
-            color: #666;
-        }
+    #descricao {
+      font-size: 1em;
+      color: #666;
+    }
 
-        /* --- SEÇÃO ELDEN RING --- */
-        #eldenring-section {
-            margin-top: 40px;
-            padding: 20px;
-            background-color: #ffffffc9;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            display: block; /* <-- antes era inline-block */
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    #eldenring-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #ffffffc9;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: block;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        #eldenring-section h2 {
-            color: #222;
-            margin-bottom: 20px;
-        }
+    #eldenring-section h2 {
+      color: #222;
+      margin-bottom: 20px;
+    }
 
-        table {
-            border-collapse: collapse;
-            margin: 0 auto;
-            width: 90%;
-            max-width: 800px;
-        }
+    #progress-container {
+      margin-bottom: 20px;
+    }
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
+    #progress-bar {
+      width: 80%;
+      max-width: 600px;
+      height: 25px;
+      background-color: #ccc;
+      border-radius: 15px;
+      margin: 0 auto 10px;
+      overflow: hidden;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
 
-        th {
-            background-color: #333;
-            color: #fff;
-        }
+    #progress {
+      height: 100%;
+      width: 0%;
+      background-color: #4CAF50;
+      border-radius: 15px;
+      transition: width 0.5s;
+    }
 
-        td img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+    #progress-text {
+      font-size: 1.2em;
+      color: #333;
+      font-weight: bold;
+    }
 
-        .status-yes {
-            color: green;
-            font-weight: bold;
-        }
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      width: 90%;
+      max-width: 800px;
+    }
 
-        .status-no {
-            color: red;
-            font-weight: bold;
-        }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            #contador-container {
-                padding: 20px;
-            }
-            #contador {
-                font-size: 2em;
-            }
-            table td img {
-                width: 60px;
-                height: 60px;
-            }
-        }
-    </style>
+    th {
+      background-color: #333;
+      color: #fff;
+    }
+
+    td img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .status-yes {
+      color: green;
+      font-weight: bold;
+    }
+
+    .status-no {
+      color: red;
+      font-weight: bold;
+    }
+
+    .tomelo {
+      color: purple;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      #contador-container {
+        padding: 20px;
+      }
+      #contador {
+        font-size: 2em;
+      }
+      table td img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Valor que o João deve para o Bruno</h1>
+  <h1>Valor que o João deve para o Bruno</h1>
 
-    <div id="contador-container">
-        <div id="contador">R$ 0,00</div>
-        <div id="descricao">Contando desde 01/01/2025</div>
+  <div id="contador-container">
+    <div id="contador">R$ 0,00</div>
+    <div id="descricao">Contando desde 01/01/2025</div>
+  </div>
+
+  <div id="eldenring-section">
+    <h2>Chefes derrotados por João em Elden Ring ⚔️</h2>
+    <h2>Mate todos para eliminar 100% da dívida! (Ass: Bruno)</h2>
+    <h3>Lista em ordem de dificuldade (Não cronológico):</h3>
+
+    <!-- NOVO BLOCO DE PROGRESSO -->
+    <div id="progress-container">
+      <div id="progress-bar">
+        <div id="progress"></div>
+      </div>
+      <div id="progress-text">0% concluído</div>
     </div>
 
-    <div id="eldenring-section">
-        <h2>Chefes derrotados por João em Elden Ring ⚔️</h2>
-        <h2>Mate todos para eliminar 100% da dívida! (Ass: Bruno)</h2>
-        <h3>Lista em ordem de dificuldade (Não cronológico): </h3>
-        <table>
-            <tr>
-                <th>Imagem</th>
-                <th>Nome do Boss</th>
-                <th>Status</th>
-                <th>Achievement</th>
-            </tr>
-            <tr>
-                <td><img src="img/godrick.webp" ></td>
-                <td>Godrick, o Enxertado</td>
-                <td class="status-yes">✅ Derrotado</td>
-                <td>Bundão</td>
-            </tr>
-            <tr>
-                <td><img src="img/margit.webp"></td>
-                <td>Margit, o Agouro Caído</td>
-                <td class="status-yes">✅ Derrotado</td>
-                <td>Não fez mais do que obrigação</td>
-            </tr>
-            <tr>
-                <td><img src="img/Rennala, Rainha da Lua Cheia.jpg" ></td>
-                <td>Rennala, Rainha da Lua Cheia</td>
-                <td class="status-no">❌ Viva ainda</td>
-                <td>Ascendeu à mediocridade</td>
-            </tr>
-            <tr>
-                <td><img src="img/Astel, Nascido do Vazio.jpg" ></td>
-                <td>Astel, Nascido do Vazio</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>O primeiro apavoro</td>
-            </tr>
-            <tr>
-                <td><img src="img/Dragão-Lich Fortissax.jpg" ></td>
-                <td>Dragão-Lich Fortissax</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Aprendeu a rolar finalmente</td>
-            </tr>
-            <tr>
-                <td><img src="img/Rykard, Senhor da Blasfêmia.webp" ></td>
-                <td>Rykard, Senhor da Blasfêmia</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Com a lança não vale (Se conseguir vai entender)</td>
-            </tr>
-            <tr>
-                <td><img src="img/Dupla da Pele Divina.jpg" ></td>
-                <td>Dupla da Pele Divina</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Parabéns, nunca achei que chegaria até aqui</td>
-            </tr>
-            <td><img src="img/Gigante de Fogo.webp"></td>
-                <td>Gigante de Fogo</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Daqui pra frente é só fodeção</td>
-            </tr>
-            <tr>
-                <td><img src="img/Besta Pristina.jpg" ></td>
-                <td>Besta Pristina</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Lendário</td>
-            </tr>
-            <tr>
-            <tr>
-                <td><img src="img/Mohg, Senhor do Sangue.webp" ></td>
-                <td>Mohg, Senhor do Sangue</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>O poder da pura teimosia</td>
-            </tr>
-            <tr>
-                <td><img src="img/Godfrey.jpg" ></td>
-                <td>Godfrey</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Nada mau, para a esposinha do Tomelo</td>
-            </tr>
-            <tr>
-                <td><img src="img/Radagon da Ordem Áurea.webp" ></td>
-                <td>Radagon da Ordem Áurea</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Apanhou bastante, né?</td>
-            </tr>
-            <tr>
-                <td><img src="img/Senhor dos Dragões Placidusax.png" ></td>
-                <td>Senhor dos Dragões Placidusax</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Barros, Dragon Slayer</td>
-            </tr>
-            <tr>
-                <td><img src="img/Messmer the Impaler.webp" ></td>
-                <td>Messmer o Impalador</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Dominou o game</td>
-            </tr>
-            <tr>
-                <td><img src="img/Bayle the Dread.jpg" ></td>
-                <td>Bayle o Horror</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Chorando sangue</td>
-            </tr>
-            <tr>
-                <td><img src="img/Malenia, Lâmina de Miquella.webp" ></td>
-                <td>Malenia, Lâmina de Miquella</td>
-                <td class="status-no">❌ Viva ainda</td>
-                <td>Derrotou o trauma</td>
-            </tr>
-            <tr>
-                <td><img src="img/Radahn, o Flagelo das Estrelas.jpg" ></td>
-                <td>Radahn, o Flagelo das Estrelas</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Respeito</td>
-            </tr>
-            <tr>
-                <td><img src="img/Radahn renascido como consorte de Miquella.webp" ></td>
-                <td>Radahn renascido como consorte de Miquella</td>
-                <td class="status-no">❌ Vivo ainda</td>
-                <td>Barrinhos, o Estupendo</td>
-            </tr>
-        </table>
-    </div>
+    <table id="boss-table">
+      <tr>
+        <th>Imagem</th>
+        <th>Nome do Boss</th>
+        <th>Status</th>
+        <th>Achievement</th>
+      </tr>
+      <tr>
+        <td><img src="img/godrick.webp"></td>
+        <td>Godrick, o Enxertado</td>
+        <td class="status-yes">✅ Derrotado</td>
+        <td>Bundão</td>
+      </tr>
+      <tr>
+        <td><img src="img/margit.webp"></td>
+        <td>Margit, o Agouro Caído</td>
+        <td class="status-yes">✅ Derrotado</td>
+        <td>Não fez mais do que obrigação</td>
+      </tr>
+      <tr>
+        <td><img src="img/Rennala, Rainha da Lua Cheia.jpg"></td>
+        <td>Rennala, Rainha da Lua Cheia</td>
+        <td class="status-no">❌ Viva ainda</td>
+        <td>Ascendeu à mediocridade</td>
+      </tr>
+      <tr>
+        <td><img src="img/Astel, Nascido do Vazio.jpg"></td>
+        <td>Astel, Nascido do Vazio</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>O primeiro apavoro</td>
+      </tr>
+      <tr>
+        <td><img src="img/Dragão-Lich Fortissax.jpg"></td>
+        <td>Dragão-Lich Fortissax</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Aprendeu a rolar finalmente</td>
+      </tr>
+      <tr>
+        <td><img src="img/Rykard, Senhor da Blasfêmia.webp"></td>
+        <td>Rykard, Senhor da Blasfêmia</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Com a lança não vale (Se conseguir vai entender)</td>
+      </tr>
+      <tr>
+        <td><img src="img/Dupla da Pele Divina.jpg"></td>
+        <td>Dupla da Pele Divina</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Parabéns, nunca achei que chegaria até aqui</td>
+      </tr>
+      <tr>
+        <td><img src="img/Gigante de Fogo.webp"></td>
+        <td>Gigante de Fogo</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Daqui pra frente é só fodeção</td>
+      </tr>
+      <tr>
+        <td><img src="img/Besta Pristina.jpg"></td>
+        <td>Besta Pristina</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Lendário</td>
+      </tr>
+      <tr>
+        <td><img src="img/Mohg, Senhor do Sangue.webp"></td>
+        <td>Mohg, Senhor do Sangue</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>O poder da pura teimosia</td>
+      </tr>
+      <tr>
+        <td><img src="img/Godfrey.jpg"></td>
+        <td>Godfrey</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Nada mau, para a esposinha do Tomelo</td>
+      </tr>
+      <tr>
+        <td><img src="img/Radagon da Ordem Áurea.webp"></td>
+        <td>Radagon da Ordem Áurea</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Apanhou bastante, né?</td>
+      </tr>
+      <tr>
+        <td><img src="img/Senhor dos Dragões Placidusax.png"></td>
+        <td>Senhor dos Dragões Placidusax</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Barros, Dragon Slayer</td>
+      </tr>
+      <tr>
+        <td><img src="img/Messmer the Impaler.webp"></td>
+        <td>Messmer o Impalador</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Dominou o game</td>
+      </tr>
+      <tr>
+        <td><img src="img/Bayle the Dread.jpg"></td>
+        <td>Bayle o Horror</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Chorando sangue</td>
+      </tr>
+      <tr>
+        <td><img src="img/Malenia, Lâmina de Miquella.webp"></td>
+        <td>Malenia, Lâmina de Miquella</td>
+        <td class="status-no">❌ Viva ainda</td>
+        <td>Derrotou o trauma</td>
+      </tr>
+      <tr>
+        <td><img src="img/Radahn, o Flagelo das Estrelas.jpg"></td>
+        <td>Radahn, o Flagelo das Estrelas</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Respeito</td>
+      </tr>
+      <tr>
+        <td><img src="img/Radahn renascido como consorte de Miquella.webp"></td>
+        <td>Radahn renascido como consorte de Miquella</td>
+        <td class="status-no">❌ Vivo ainda</td>
+        <td>Barrinhos, o Estupendo</td>
+      </tr>
 
-    <script>
-        const inicio = new Date("2025-01-01T00:00:00");
+    </table>
+      <p class="tomelo">Tomelo Gay 🌈</p>
 
-        function atualizarContador() {
-            const agora = new Date();
-            const diferencaSegundos = Math.floor((agora - inicio) / 1000);
-            const valorAtual = (diferencaSegundos * 0.01).toFixed(2).replace('.', ',');
-            document.getElementById("contador").textContent = `R$ ${valorAtual}`;
+  </div>
+
+  <script>
+    const inicio = new Date("2025-01-01T00:00:00");
+
+    function atualizarContador() {
+      const agora = new Date();
+      const diferencaSegundos = Math.floor((agora - inicio) / 1000);
+      const valorAtual = (diferencaSegundos * 0.01).toFixed(2).replace('.', ',');
+      document.getElementById("contador").textContent = `R$ ${valorAtual}`;
+    }
+
+    function atualizarAchievementBestaPristina() {
+      const dataPerdaAposta = new Date("2025-01-01T00:00:00");
+      const agora = new Date();
+      const diferencaMs = agora - dataPerdaAposta;
+      const diasAtraso = Math.floor(diferencaMs / (1000 * 60 * 60 * 24));
+
+      const linhas = document.querySelectorAll("#boss-table tr");
+      linhas.forEach((linha) => {
+        const nomeBoss = linha.cells[1]?.textContent?.trim();
+        if (nomeBoss && nomeBoss.includes("Besta Pristina")) {
+          linha.cells[3].textContent = `Parabéns, só atrasou ${diasAtraso} dias`;
         }
+      });
+    }
 
-        setInterval(atualizarContador, 1000);
+    function atualizarProgresso() {
+      const linhas = document.querySelectorAll("#boss-table tr");
+      let total = 0;
+      let derrotados = 0;
 
-        function atualizarAchievementBestaPristina() {
-            const dataPerdaAposta = new Date("2025-01-01T00:00:00");
-            const agora = new Date();
-            const diferencaMs = agora - dataPerdaAposta;
-            const diasAtraso = Math.floor(diferencaMs / (1000 * 60 * 60 * 24));
-
-            // localiza a célula do achievement da Besta Pristina
-            const linhas = document.querySelectorAll("#eldenring-section table tr");
-            linhas.forEach((linha) => {
-                const nomeBoss = linha.cells[1]?.textContent.trim();
-                if (nomeBoss && nomeBoss.includes("Besta Pristina")) {
-                    linha.cells[3].textContent = `Parabéns, só atrasou ${diasAtraso} dias`;
-                }
-            });
+      linhas.forEach((linha, index) => {
+        if (index === 0) return; // pular cabeçalho
+        const statusCell = linha.cells[2];
+        if (statusCell) {
+          total++;
+          if (statusCell.classList.contains("status-yes")) {
+            derrotados++;
+          }
         }
+      });
 
-        atualizarAchievementBestaPristina();
-    </script>
+      const percentual = ((derrotados / total) * 100).toFixed(1);
+      const barra = document.getElementById("progress");
+      const texto = document.getElementById("progress-text");
+      barra.style.width = `${percentual}%`;
+      texto.textContent = `${percentual}% concluído`;
+    }
+
+    setInterval(atualizarContador, 1000);
+    atualizarAchievementBestaPristina();
+    atualizarProgresso();
+  </script>
 </body>
 </html>
